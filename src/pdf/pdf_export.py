@@ -13,5 +13,5 @@ class PDFExporter:
         pdf.set_font("Arial", size=12)
         pdf.cell(200, 10, txt="Data Report", ln=True, align="C")
         pdf.image("chart.png", x=10, y=20, w=180)
-        pdf.output("report.pdf")
+        pdf.output("/product/report.pdf")
         messagebox.showinfo("Success", "PDF report generated successfully as 'report.pdf'!")

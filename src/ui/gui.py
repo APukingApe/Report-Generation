@@ -8,9 +8,23 @@ from src.pdf.pdf_export import PDFExporter
 def create_gui():
     root = tk.Tk()
     root.title("Report Generator with PDF Export")
+
+    screen_width = root.winfo_screenwidth()
+    screen_height = root.winfo_screenheight()
+
+    
+    window_width = int(screen_width * 0.4)
+    window_height = int(screen_height * 0.8)
+    root.geometry(f"{window_width}x{window_height}")
+    # root.geometry("800x600+100+200")
+
+    root.grid_rowconfigure(0, weight=1)
+    root.grid_columnconfigure(0, weight=1)
+
     label = Label(root, text="", justify="left", anchor="nw", bg="white", font=("Arial", 10), wraplength=680, width=100, height=15)
     label.grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
-    canvas = Canvas(root)
+
+    canvas = Canvas(root, bg="white", highlightthickness=2, highlightbackground="black")  # 设置边框
     canvas.grid(row=1, column=0, padx=5, pady=5, sticky="nsew")
     graph_type = StringVar(value="Line")
     data_display = DataDisplay(root, canvas, graph_type)
@@ -27,5 +41,6 @@ def handle_file_upload(label, data_display):
         data_display.display_data(data, label)
     else:
         messagebox.showwarning("Warning", "No file selected")
+
 
 create_gui()

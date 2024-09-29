@@ -7,6 +7,10 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from fpdf import FPDF  
 
+def clear_treeview(tree):
+    for item in tree.get_children():
+        tree.delete(item)
+
 class DataDisplay:
     def __init__(self, root, canvas, graph_type):
         self.root = root
@@ -18,45 +22,82 @@ class DataDisplay:
         self.x_axis_var.set('')
         self.y_axis_vars = {}
 
-    def display_data(self, data, label):
+    def display_data(self, data):
         self.data = data
         display_text = data.head(10).to_string() + "\n\nSummary Statistics:\n" + data.describe().to_string()
-        label.config(text=display_text)
+        # label.config(text=display_text)
         self.create_checkboxes(data.columns)
-    
+
+    def sort_column(self, tree, col, reverse):
+        # Sort the data using pandas
+        sorted_data = self.data.sort_values(by=[col], ascending=not reverse)
+
+        # Re-insert the sorted data into the Treeview
+        self.insert_data_into_treeview(tree, sorted_data)
+
+        # Track the current sorted column and direction
+        self.sorted_column = col
+        self.sort_reverse = reverse        
+
+    def insert_data_into_treeview(self, tree, data):
+        self.clear_treeview(tree)
+        for index, row in data.iterrows():
+            values = [str(value) for value in row]
+            tree.insert("", "end", values=values)
+
+    def sortby(self, tree, col, descending):
+        """ Sort tree contents when a column header is clicked. """
+        
+        data_list = [(tree.set(child, col), child) for child in tree.get_children('')]
+        
+        try:
+            data_list.sort(key=lambda t: float(t[0]), reverse=descending)
+        except ValueError:
+            data_list.sort(key=lambda t: t[0], reverse=descending)
+        
+        for index, (val, item) in enumerate(data_list):
+            tree.move(item, '', index)
+        
+        tree.heading(col, command=lambda _col=col: self.sortby(tree, _col, not descending))
+
     def open_data_window(self, data):
+        print("Opening new data window...") 
         window = Toplevel(self.root)
         window.title("Data Display")
-        # window.geometry("500x500")
-        window.state('zoomed')
-        
+        window.state('zoomed')  # auto zoom
+
+    # if data is not None:
         frame = Frame(window)
         frame.pack(fill="both", expand=True)
-        
+
+        # Insert tree view
         tree = ttk.Treeview(frame, columns=list(data.columns), show="headings", height=15)
         tree.pack(side="left", fill="both", expand=True)
-        # text_area = Text(frame, wrap="none", font=("Arial", 10))
-        scrollbar_y = Scrollbar(frame, orient="vertical", command=tree.yview) 
+
+        # Add scroller
+        scrollbar_y = Scrollbar(frame, orient="vertical", command=tree.yview)
         scrollbar_y.pack(side="right", fill="y")
         tree.configure(yscrollcommand=scrollbar_y.set)
 
-        scrollbar_x = Scrollbar(window, orient="horizontal", command=tree.xview) 
+        scrollbar_x = Scrollbar(window, orient="horizontal", command=tree.xview)  # 放在窗口的底部
         scrollbar_x.pack(side="bottom", fill="x")
         tree.configure(xscrollcommand=scrollbar_x.set)
 
         for col in data.columns:
-            tree.heading(col, text=col)
+            tree.heading(col, text=col, command=lambda _col=col: self.sortby(tree, _col, False))
             tree.column(col, width=100, anchor="center")
 
+        clear_treeview(tree)  # 
+        for index, row in data.iterrows():
+            values = [str(value) for value in row]
+            # print(f"Inserting row {index}: {values}") 
+            tree.insert("", "end", values=values)
 
-        for index, row in data.head(15).iterrows():
-            tree.insert("", "end", values=list(row))
-            
-        label = Label(window, text=data.to_string(), justify="left", anchor="nw", font=("Arial", 10), bg="white")
-        label.pack(fill="both", expand=True)
-        
-        Button(window, text="Save as PDF", command=lambda: self.save_as_pdf(data)).pack(pady=10)
-        Button(window, text="Exit", command=window.destroy).pack(pady=10)
+        button_frame = Frame(window)
+        button_frame.pack(side="bottom", fill="x", padx=5, pady=5)
+
+        Button(button_frame, text="Save as PDF", command=lambda: self.save_as_pdf(data)).pack(side="left", padx=10, pady=10)
+        Button(button_frame, text="Exit", command=window.destroy).pack(side="right", padx=10, pady=10)
 
     def create_checkboxes(self, columns):
         Label(self.root, text="Select columns for Y-axis:").grid(row=2, column=0, pady=5, sticky="nsew")
@@ -114,6 +155,7 @@ class DataDisplay:
         chart = FigureCanvasTkAgg(fig, self.canvas)
         chart.get_tk_widget().pack(fill="both", expand=True)
         plt.close(fig)
+
 
     def save_as_pdf(self, data):
         file_path = filedialog.asksaveasfilename(defaultextension=".pdf", filetypes=[("PDF files", "*.pdf")])

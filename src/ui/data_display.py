@@ -59,14 +59,30 @@ class DataDisplay:
             tree.move(item, '', index)
         
         tree.heading(col, command=lambda _col=col: self.sortby(tree, _col, not descending))
+    
+    def open_report_window(self, data):
+        window = Toplevel(self.root)
+        window.title("Statistics Report")
+        window.geometry("600x400")
+
+        text_widget = Text(window, bd=2, relief="ridge") 
+        text_widget.pack(fill="both", expand=True, padx=10, pady=10)  
+
+        report = data.describe().transpose().to_string()
+
+        text_widget.insert("1.0", report)
+
+        button_frame = Frame(window)
+        button_frame.pack(side="bottom", fill="x", padx=5, pady=5)
+
+        Button(button_frame, text="Save as PDF", command=lambda: self.save_as_pdf_report(report)).pack(side="left", padx=10, pady=10)
+        Button(button_frame, text="Exit", command=window.destroy).pack(side="right", padx=10, pady=10)
 
     def open_data_window(self, data):
-        print("Opening new data window...") 
         window = Toplevel(self.root)
         window.title("Data Display")
         window.state('zoomed')  # auto zoom
 
-    # if data is not None:
         frame = Frame(window)
         frame.pack(fill="both", expand=True)
 
@@ -90,7 +106,6 @@ class DataDisplay:
         clear_treeview(tree)  # 
         for index, row in data.iterrows():
             values = [str(value) for value in row]
-            # print(f"Inserting row {index}: {values}") 
             tree.insert("", "end", values=values)
 
         button_frame = Frame(window)
@@ -99,20 +114,37 @@ class DataDisplay:
         Button(button_frame, text="Save as PDF", command=lambda: self.save_as_pdf(data)).pack(side="left", padx=10, pady=10)
         Button(button_frame, text="Exit", command=window.destroy).pack(side="right", padx=10, pady=10)
 
-    def create_checkboxes(self, columns):
-        Label(self.root, text="Select columns for Y-axis:").grid(row=2, column=0, pady=5, sticky="nsew")
+    # def create_checkboxes(self, columns):
+    #     Label(self.root, text="Select columns for Y-axis:").grid(row=2, column=0, pady=5, sticky="nsew")
 
+    #     for index, column in enumerate(columns):
+    #         var = IntVar()
+    #         self.selected_columns[column] = var
+    #         Checkbutton(self.root, text=column, variable=var).grid(row=3 + index, column=0, sticky='w', padx=10)
+        
+    #     Label(self.root, text="Select column for X-axis:").grid(row=2, column=1, pady=5, sticky="nsew")
+    #     self.x_axis_var.set(columns[0])  
+    #     OptionMenu(self.root, self.x_axis_var, *columns).grid(row=3, column=1, padx=10)
+
+    #     Button(self.root, text="Apply Selection and Plot", command=self.apply_selection_and_plot).grid(row=14, column=0, pady=5)
+    #     Button(self.root, text="Show Raw Data ", command=lambda: self.open_data_window(self.data)).grid(row=15, column=0, pady=5)
+    #     Button(self.root, text="Show Report", command=lambda: self.open_report_window(self.data)).grid(row=16, column=0, pady=5)
+    def create_checkboxes(self, columns):
+        Label(self.root, text="Select columns for Y-axis:").grid(row=1, column=0, columnspan=len(columns), pady=5, sticky="ew")
+        
         for index, column in enumerate(columns):
             var = IntVar()
             self.selected_columns[column] = var
-            Checkbutton(self.root, text=column, variable=var).grid(row=3 + index, column=0, sticky='w', padx=10)
-        
-        Label(self.root, text="Select column for X-axis:").grid(row=2, column=1, pady=5, sticky="nsew")
-        self.x_axis_var.set(columns[0])  
-        OptionMenu(self.root, self.x_axis_var, *columns).grid(row=3, column=1, padx=10)
+            Checkbutton(self.root, text=column, variable=var).grid(row=2, column=index, sticky='ew', padx=5)
 
-        Button(self.root, text="Apply Selection and Plot", command=self.apply_selection_and_plot).grid(row=14, column=0, pady=5, sticky="nsew", columnspan=2)
-        Button(self.root, text="Show Data in New Window", command=lambda: self.open_data_window(self.data)).grid(row=15, column=0, pady=5, sticky="nsew", columnspan=2)
+        Label(self.root, text="Select column for X-axis:").grid(row=1, column=len(columns), pady=5, sticky="nsew")
+        
+        self.x_axis_var.set(columns[0])  
+        OptionMenu(self.root, self.x_axis_var, *columns).grid(row=2, column=len(columns), padx=10, sticky="ew")
+
+        Button(self.root, text="Apply Selection and Plot", command=self.apply_selection_and_plot).grid(row=14, column=0, pady=5, columnspan=2, sticky='ew')
+        Button(self.root, text="Show Raw Data", command=lambda: self.open_data_window(self.data)).grid(row=15, column=0, pady=5, columnspan=2, sticky='ew')
+        Button(self.root, text="Show Report", command=lambda: self.open_report_window(self.data)).grid(row=16, column=0, pady=5, columnspan=2, sticky='ew')
 
     def apply_selection_and_plot(self):
         if self.data is None:

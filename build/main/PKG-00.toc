@@ -1,0 +1,252 @@
+('C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+ 'Generator\\build\\main\\main.pkg',
+ {'BINARY': True,
+  'DATA': True,
+  'EXECUTABLE': True,
+  'EXTENSION': True,
+  'PYMODULE': True,
+  'PYSOURCE': True,
+  'PYZ': False,
+  'SPLASH': True,
+  'SYMLINK': False},
+ [('pyi-contents-directory _internal', '', 'OPTION'),
+  ('PYZ-00.pyz',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\build\\main\\PYZ-00.pyz',
+   'PYZ'),
+  ('struct',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\build\\main\\localpycs\\struct.pyc',
+   'PYMODULE'),
+  ('pyimod01_archive',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\build\\main\\localpycs\\pyimod01_archive.pyc',
+   'PYMODULE'),
+  ('pyimod02_importers',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\build\\main\\localpycs\\pyimod02_importers.pyc',
+   'PYMODULE'),
+  ('pyimod03_ctypes',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\build\\main\\localpycs\\pyimod03_ctypes.pyc',
+   'PYMODULE'),
+  ('pyimod04_pywin32',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\build\\main\\localpycs\\pyimod04_pywin32.pyc',
+   'PYMODULE'),
+  ('pyiboot01_bootstrap',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\PyInstaller\\loader\\pyiboot01_bootstrap.py',
+   'PYSOURCE'),
+  ('pyi_rth_inspect',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgutil',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
+   'PYSOURCE'),
+  ('pyi_rth_multiprocessing',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgres',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
+   'PYSOURCE'),
+  ('main',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\util\\main.py',
+   'PYSOURCE'),
+  ('python310.dll', 'C:\\Python310\\python310.dll', 'BINARY'),
+  ('select.pyd', 'C:\\Python310\\DLLs\\select.pyd', 'EXTENSION'),
+  ('_lzma.pyd', 'C:\\Python310\\DLLs\\_lzma.pyd', 'EXTENSION'),
+  ('_bz2.pyd', 'C:\\Python310\\DLLs\\_bz2.pyd', 'EXTENSION'),
+  ('unicodedata.pyd', 'C:\\Python310\\DLLs\\unicodedata.pyd', 'EXTENSION'),
+  ('_socket.pyd', 'C:\\Python310\\DLLs\\_socket.pyd', 'EXTENSION'),
+  ('_decimal.pyd', 'C:\\Python310\\DLLs\\_decimal.pyd', 'EXTENSION'),
+  ('_hashlib.pyd', 'C:\\Python310\\DLLs\\_hashlib.pyd', 'EXTENSION'),
+  ('_ctypes.pyd', 'C:\\Python310\\DLLs\\_ctypes.pyd', 'EXTENSION'),
+  ('_uuid.pyd', 'C:\\Python310\\DLLs\\_uuid.pyd', 'EXTENSION'),
+  ('_ssl.pyd', 'C:\\Python310\\DLLs\\_ssl.pyd', 'EXTENSION'),
+  ('pyexpat.pyd', 'C:\\Python310\\DLLs\\pyexpat.pyd', 'EXTENSION'),
+  ('_multiprocessing.pyd',
+   'C:\\Python310\\DLLs\\_multiprocessing.pyd',
+   'EXTENSION'),
+  ('_queue.pyd', 'C:\\Python310\\DLLs\\_queue.pyd', 'EXTENSION'),
+  ('PIL\\_webp.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\PIL\\_webp.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('PIL\\_imagingtk.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\PIL\\_imagingtk.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\_core\\_multiarray_tests.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy\\_core\\_multiarray_tests.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\_core\\_multiarray_umath.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy\\_core\\_multiarray_umath.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\linalg\\_umath_linalg.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy\\linalg\\_umath_linalg.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('_overlapped.pyd', 'C:\\Python310\\DLLs\\_overlapped.pyd', 'EXTENSION'),
+  ('_asyncio.pyd', 'C:\\Python310\\DLLs\\_asyncio.pyd', 'EXTENSION'),
+  ('numpy\\random\\mtrand.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy\\random\\mtrand.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_sfc64.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy\\random\\_sfc64.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_philox.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy\\random\\_philox.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_pcg64.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy\\random\\_pcg64.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_mt19937.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy\\random\\_mt19937.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\bit_generator.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy\\random\\bit_generator.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_generator.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy\\random\\_generator.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_bounded_integers.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy\\random\\_bounded_integers.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\random\\_common.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy\\random\\_common.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy\\fft\\_pocketfft_umath.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy\\fft\\_pocketfft_umath.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('PIL\\_imagingcms.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\PIL\\_imagingcms.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('PIL\\_imagingmath.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\PIL\\_imagingmath.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('PIL\\_imaging.cp310-win_amd64.pyd',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\PIL\\_imaging.cp310-win_amd64.pyd',
+   'EXTENSION'),
+  ('_elementtree.pyd', 'C:\\Python310\\DLLs\\_elementtree.pyd', 'EXTENSION'),
+  ('VCRUNTIME140.dll', 'C:\\Python310\\VCRUNTIME140.dll', 'BINARY'),
+  ('libcrypto-1_1.dll', 'C:\\Python310\\DLLs\\libcrypto-1_1.dll', 'BINARY'),
+  ('libffi-7.dll', 'C:\\Python310\\DLLs\\libffi-7.dll', 'BINARY'),
+  ('libssl-1_1.dll', 'C:\\Python310\\DLLs\\libssl-1_1.dll', 'BINARY'),
+  ('numpy.libs\\libscipy_openblas64_-c16e4918366c6bc1f1cd71e28ca36fc0.dll',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy.libs\\libscipy_openblas64_-c16e4918366c6bc1f1cd71e28ca36fc0.dll',
+   'BINARY'),
+  ('numpy.libs\\msvcp140-23ebcc0b37c8e3d074511f362feac48b.dll',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\venv\\lib\\site-packages\\numpy.libs\\msvcp140-23ebcc0b37c8e3d074511f362feac48b.dll',
+   'BINARY'),
+  ('VCRUNTIME140_1.dll', 'C:\\Python310\\VCRUNTIME140_1.dll', 'BINARY'),
+  ('src\\__init__.py',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\__init__.py',
+   'DATA'),
+  ('src\\__pycache__\\__init__.cpython-310.pyc',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\__pycache__\\__init__.cpython-310.pyc',
+   'DATA'),
+  ('src\\data\\__pycache__\\file_operate.cpython-310.pyc',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\data\\__pycache__\\file_operate.cpython-310.pyc',
+   'DATA'),
+  ('src\\data\\file_operate.py',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\data\\file_operate.py',
+   'DATA'),
+  ('src\\data\\summary_generator.py',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\data\\summary_generator.py',
+   'DATA'),
+  ('src\\pdf\\__pycache__\\pdf_export.cpython-310.pyc',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\pdf\\__pycache__\\pdf_export.cpython-310.pyc',
+   'DATA'),
+  ('src\\pdf\\pdf_export.py',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\pdf\\pdf_export.py',
+   'DATA'),
+  ('src\\plotting\\plot_generator.py',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\plotting\\plot_generator.py',
+   'DATA'),
+  ('src\\ui\\__pycache__\\data_display.cpython-310.pyc',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\ui\\__pycache__\\data_display.cpython-310.pyc',
+   'DATA'),
+  ('src\\ui\\__pycache__\\gui.cpython-310.pyc',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\ui\\__pycache__\\gui.cpython-310.pyc',
+   'DATA'),
+  ('src\\ui\\data_display.py',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\ui\\data_display.py',
+   'DATA'),
+  ('src\\ui\\gui.py',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\ui\\gui.py',
+   'DATA'),
+  ('src\\util\\main.py',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\util\\main.py',
+   'DATA'),
+  ('src\\util\\plot_20240930-175408.png',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\util\\plot_20240930-175408.png',
+   'DATA'),
+  ('src\\util\\plot_20240930-202231.png',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\util\\plot_20240930-202231.png',
+   'DATA'),
+  ('src\\util\\plot_20241001-004229.png',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\util\\plot_20241001-004229.png',
+   'DATA'),
+  ('src\\util\\plot_20241001-004540.png',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\util\\plot_20241001-004540.png',
+   'DATA'),
+  ('src\\util\\plot_20241001-011551.png',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\util\\plot_20241001-011551.png',
+   'DATA'),
+  ('src\\util\\requirements.txt',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\src\\util\\requirements.txt',
+   'DATA'),
+  ('base_library.zip',
+   'C:\\Users\\Administrator\\Desktop\\Material Hang Zhao\\Report '
+   'Generator\\build\\main\\base_library.zip',
+   'DATA')],
+ 'python310.dll',
+ False,
+ False,
+ False,
+ [],
+ None,
+ None,
+ None)

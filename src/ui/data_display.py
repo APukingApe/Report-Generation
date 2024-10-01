@@ -1,49 +1,4 @@
-<<<<<<< Updated upstream
-from tkinter import Label, Checkbutton, IntVar, Button, messagebox
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
-class DataDisplay:
-    def __init__(self, root, canvas, graph_type):
-        self.root = root
-        self.canvas = canvas
-        self.graph_type = graph_type
-        self.selected_columns = {}
-
-    def display_data(self, data, label):
-        display_text = data.head().to_string() + "\n\nSummary Statistics:\n" + data.describe().to_string()
-        label.config(text=display_text)
-        self.create_checkboxes(data.columns)
-
-    def create_checkboxes(self, columns):
-        Label(self.root, text="Select columns to display:").grid(row=2, column=0, pady=5, sticky="nsew")
-        for index, column in enumerate(columns):
-            var = IntVar()
-            self.selected_columns[column] = var
-            Checkbutton(self.root, text=column, variable=var).grid(row=3 + index, column=0, sticky='w', padx=10)
-        Button(self.root, text="Apply Selection and Plot", command=self.apply_selection_and_plot).grid(row=14, column=0, pady=5)
-
-    def apply_selection_and_plot(self):
-        selected_cols = [col for col, var in self.selected_columns.items() if var.get() == 1]
-        if not selected_cols:
-            messagebox.showwarning("Warning", "No columns selected")
-            return
-        filtered_data = self.data[selected_cols]
-        self.plot_chart(filtered_data)
-
-    def plot_chart(self, data):
-        for widget in self.canvas.winfo_children():
-            widget.destroy()
-        fig, ax = plt.subplots(figsize=(6, 4))
-        if self.graph_type.get() == "Line":
-            data.plot(ax=ax, kind='line', title="Line Chart")
-        elif self.graph_type.get() == "Bar":
-            data.plot(ax=ax, kind='bar', title="Bar Chart")
-        chart = FigureCanvasTkAgg(fig, self.canvas)
-        chart.get_tk_widget().pack(fill="both", expand=True)
-        plt.close(fig)
-=======
-import os
+from pathlib import Path
 import time
 import tkinter as tk
 from tkinter import Checkbutton, Label, Canvas, StringVar, IntVar, OptionMenu, Button, Toplevel, Scrollbar, Frame, Text
@@ -73,7 +28,7 @@ class DataDisplay:
 
     def display_data(self, data):
         self.data = data
-        display_text = data.head(10).to_string() + "\n\nSummary Statistics:\n" + data.describe().to_string()
+#        display_text = data.head(10).to_string() + "\n\nSummary Statistics:\n" + data.describe().to_string()
         self.create_checkboxes(data.columns)
 
     def sort_column(self, tree, col, reverse):
@@ -114,7 +69,7 @@ class DataDisplay:
         window.geometry("600x400")
 
         # Generate the DataFrame for report (DataFrame, not string)
-        report_df = data.describe().transpose()  # Keep the report as a DataFrame
+        report_df = data.describe().transpose() 
 
         # Create a Text widget to display the report as a string for viewing
         text_widget = Text(window, bd=2, relief="ridge") 
@@ -193,7 +148,7 @@ class DataDisplay:
             self.y_listbox.insert(tk.END, col)
 
         Label(self.root, text="Select Chart Type:").grid(row=2, column=0, padx=10, pady=5, sticky="e")
-        OptionMenu(self.root, self.graph_type, "Line", "Bar").grid(row=2, column=1, padx=10, pady=5, sticky="w")
+        OptionMenu(self.root, self.graph_type, "Line", "Bar", "Pie").grid(row=2, column=1, padx=10, pady=5, sticky="w")
 
         Button(self.root, text="Apply Selection and Plot", command=self.apply_selection_and_plot).grid(row=3, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
         Button(self.root, text="Show Raw Data", command=lambda: self.open_data_window(self.data)).grid(row=4, column=0, columnspan=2, padx=10, pady=5, sticky="ew")
@@ -236,7 +191,19 @@ class DataDisplay:
         elif self.graph_type.get() == "Bar":
             data.plot(kind='bar', x=x_column, y=y_columns, ax=ax)
             ax.set_title("Bar Chart")
-        
+
+        elif self.graph_type.get() == "Pie":
+            if len(y_columns) != 1:
+                messagebox.showwarning("Warning", "Pie chart requires exactly one Y-axis column.")
+                return
+            pie_data = data[y_columns[0]].value_counts()  # 使用 value_counts 汇总数据
+            labels = pie_data.index
+            sizes = pie_data.values
+
+            ax.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=90)
+            ax.axis('equal')  # 保持饼图为圆形
+            ax.set_title(f"Pie Chart for {y_columns[0]}") 
+
         ax.legend()
 
         chart = FigureCanvasTkAgg(self.fig, self.canvas)
@@ -244,30 +211,27 @@ class DataDisplay:
         #plt.close(self.fig)
 
     def save_canvas_to_report(self):
-        print("save_canvas_to_report called")
-
         if not hasattr(self, 'fig'):
             print("No figure found to save.")
             messagebox.showwarning("Warning", "No figure found to save.")
-            return        
+            return
+
         timestamp = time.strftime("%Y%m%d-%H%M%S")
         image_file = f"plot_{timestamp}.png"
         
-        image_path = os.path.join(os.getcwd(), image_file)
-        
-        # Save the figure (canvas) as an image file in the current working directory
-        self.fig.savefig(image_path)  # Save the plot as an image file
-        
-        # Check if the image was saved successfully
-        if os.path.exists(image_path):
-            print(f"Image saved successfully at {image_path}")  # Debugging output
-            self.report_list.append({"type": "image", "file": image_path})  # Add the image file to the report list
+        image_path = Path.cwd() / image_file
+
+        self.fig.savefig(image_path)
+
+        if image_path.exists():
+            print(f"Image saved successfully at {image_path}")
+            self.report_list.append({"type": "image", "file": str(image_path)})  # 添加到报告列表
+            plt.close(self.fig) 
             messagebox.showinfo("Success", f"Canvas image added to the report as {image_file}")
         else:
             print(f"Failed to save image at {image_path}")
             messagebox.showwarning("Warning", f"Failed to save image at {image_path}")
-    
+
     def save_as_pdf(self, report_content):
         self.report_list.append(report_content)
         messagebox.showinfo("Success", "Report added to the PDF list.")
->>>>>>> Stashed changes

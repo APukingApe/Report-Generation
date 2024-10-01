@@ -1,6 +1,8 @@
 import sys
-import os
-sys.path.append(os.path.abspath('../../'))
+from pathlib import Path
+
+path = Path(__file__).resolve().parents[2]
+sys.path.append(str(path))
 
 from src.ui.gui import create_gui
 
